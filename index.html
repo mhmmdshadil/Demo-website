@@ -11,23 +11,38 @@
 
   <style>
     body {
-      background: #000; /* Apple-style black */
+      background: radial-gradient(circle at top, #0a0a0c, #000);
       color: #f5f5f7;
       font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
       margin: 0;
       overflow-x: hidden;
     }
+
     h1, h2, h3 { font-weight: 700; color: #fff; }
     p { color: #d1d1d6; }
 
-    /* Header */
+    /* Glass aesthetic */
+    .glass {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+      transition: all 0.4s ease;
+    }
+    .glass:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-6px);
+    }
+
+    /* Fixed header */
     .fixed-header {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      background: rgba(0,0,0,0.7);
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(0,0,0,0.6);
       backdrop-filter: blur(20px);
       display: flex; justify-content: center; align-items: center;
-      padding: 8px 20px;
+      padding: 10px 20px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       z-index: 1000;
       transform: translateY(-100%);
@@ -35,46 +50,18 @@
     }
     .fixed-header.active { transform: translateY(0); }
 
-    /* Hero image glow */
-    .image-wrapper {
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid #1d1d1f;
-      box-shadow: 0 0 30px rgba(255,255,255,0.08);
-    }
-
-    /* Glass cards */
-    .glass-effect {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      transition: all 0.4s ease;
-    }
-    .glass-effect:hover {
-      background: rgba(255,255,255,0.06);
-      transform: translateY(-5px);
-    }
-
-    /* Portfolio cards */
-    .portfolio-card {
-      transition: transform 0.4s ease;
-    }
-    .portfolio-card:hover {
-      transform: translateY(-6px) scale(1.01);
-    }
-
-    /* Apple-style button */
+    /* Buttons */
     .cta-button {
-      background: #0071e3;
+      background: linear-gradient(135deg, #0071e3, #0a84ff);
       border-radius: 999px;
       padding: 14px 32px;
       font-weight: 600;
-      transition: all 0.3s ease;
       color: #fff;
+      transition: all 0.3s ease;
       display: inline-block;
     }
     .cta-button:hover {
-      background: #0077ed;
+      background: linear-gradient(135deg, #0a84ff, #2997ff);
     }
 
     /* Social icons */
@@ -82,30 +69,33 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 44px;
-      height: 44px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: rgba(255,255,255,0.05);
-      margin: 0 6px;
+      margin: 0 8px;
       color: #f5f5f7;
       transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
     }
     .social-icons a:hover {
-      background: #0071e3;
+      background: linear-gradient(135deg, #0071e3, #2997ff);
       color: #fff;
+      transform: scale(1.1);
     }
+
+    /* Text scaling */
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); letter-spacing: -0.02em; }
+    h2 { font-size: clamp(2rem, 5vw, 3rem); }
+    p { font-size: 1.05rem; }
 
     footer {
       border-top: 1px solid rgba(255,255,255,0.08);
     }
-
-    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
-    h2 { font-size: clamp(2rem, 5vw, 3rem); }
-    p { font-size: 1.05rem; }
   </style>
 </head>
 <body>
-  <!-- Fixed Header -->
+  <!-- Header -->
   <div class="fixed-header">
     <div class="flex items-center gap-3">
       <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" width="40" height="40" alt="Profile" class="rounded-full">
@@ -115,10 +105,10 @@
 
   <!-- Hero -->
   <header class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-    <div class="image-wrapper w-48 h-48 mb-6">
-      <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" alt="Muhammed Shadil MP" class="w-full h-full object-cover rounded-full">
+    <div class="glass p-2 rounded-full">
+      <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" alt="Muhammed Shadil MP" class="w-48 h-48 object-cover rounded-full shadow-lg">
     </div>
-    <h1>Muhammed Shadil MP</h1>
+    <h1 class="mt-8">Muhammed Shadil MP</h1>
     <p class="mt-3 text-xl md:text-2xl font-medium text-gray-400">UI/UX Designer · Web Developer</p>
     <a href="#contact" class="cta-button mt-8">Get in Touch</a>
   </header>
@@ -126,9 +116,9 @@
   <!-- About -->
   <section id="about" class="py-24 px-6">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="mb-6">About Me</h2>
-      <div class="glass-effect p-10 leading-relaxed">
-        Passionate about blending design and technology, I craft user-friendly digital experiences with clean aesthetics. I also integrate AI to enhance productivity and creativity in my projects.
+      <h2 class="mb-8">About Me</h2>
+      <div class="glass p-10 leading-relaxed">
+        I design and build elegant, user-centric digital experiences. My focus is on combining minimal aesthetics with cutting-edge functionality. With a passion for integrating AI, I craft solutions that enhance creativity and efficiency.
       </div>
     </div>
   </section>
@@ -138,21 +128,21 @@
     <div class="max-w-5xl mx-auto text-center">
       <h2 class="mb-12">What I Do</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="glass-effect p-8">
+        <div class="glass p-8">
           <h3 class="text-lg font-semibold mb-2">UI/UX Design</h3>
-          <p>Intuitive, human-centered design for web and mobile.</p>
+          <p>Clean, intuitive interfaces for web & mobile.</p>
         </div>
-        <div class="glass-effect p-8">
+        <div class="glass p-8">
           <h3 class="text-lg font-semibold mb-2">AI Integration</h3>
-          <p>Using AI tools to streamline workflows and projects.</p>
+          <p>Smart tools that boost productivity and workflows.</p>
         </div>
-        <div class="glass-effect p-8">
+        <div class="glass p-8">
           <h3 class="text-lg font-semibold mb-2">Web Development</h3>
-          <p>Building responsive, performance-focused websites.</p>
+          <p>Responsive, scalable, and high-performance builds.</p>
         </div>
-        <div class="glass-effect p-8">
+        <div class="glass p-8">
           <h3 class="text-lg font-semibold mb-2">Creative Direction</h3>
-          <p>Shaping unique aesthetics with precision and clarity.</p>
+          <p>Unique digital aesthetics with precision.</p>
         </div>
       </div>
     </div>
@@ -163,20 +153,20 @@
     <div class="max-w-6xl mx-auto text-center">
       <h2 class="mb-12">Portfolio</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        
+
         <!-- Payora -->
-        <div class="portfolio-card glass-effect p-6">
-          <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/Payroll.png" alt="Payroll" class="w-full h-52 object-cover rounded-lg mb-4">
+        <div class="glass p-6">
+          <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/Payroll.png" alt="Payroll" class="w-full h-52 object-cover rounded-xl mb-4">
           <h3 class="text-lg font-semibold mb-2">Payora - Payroll Software</h3>
-          <p class="mb-4">Excel-based payroll software to streamline salary management.</p>
+          <p class="mb-4">Excel-based payroll solution to simplify salary management.</p>
           <a href="https://github.com/mhmmdshadil/muhammed-shadil/raw/main/payroll.xlsx" class="text-blue-400 hover:underline">Download</a>
         </div>
 
         <!-- LearnVault -->
-        <div class="portfolio-card glass-effect p-6">
-          <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/learnvault.png" alt="LearnVault" class="w-full h-52 object-cover rounded-lg mb-4">
+        <div class="glass p-6">
+          <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/learnvault.png" alt="LearnVault" class="w-full h-52 object-cover rounded-xl mb-4">
           <h3 class="text-lg font-semibold mb-2">LearnVault</h3>
-          <p class="mb-4">An organized platform to learn with curated resources.</p>
+          <p class="mb-4">A structured learning platform with curated resources.</p>
           <a href="https://mhmmdshadil.github.io/learnvault/" class="text-blue-400 hover:underline">Visit Site</a>
         </div>
 
