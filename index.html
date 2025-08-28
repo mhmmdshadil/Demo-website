@@ -2,176 +2,162 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <meta name="description" content="Portfolio of Muhammed Shadil MP, a tech enthusiast specializing in UI/UX, AI, and web development.">
-  <meta name="keywords" content="Muhammed Shadil, UI/UX, web development, AI, portfolio">
-  <meta property="og:title" content="Muhammed Shadil MP Portfolio">
-  <meta property="og:image" content="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg">
-  <meta property="og:description" content="Explore the portfolio of Muhammed Shadil MP, a tech enthusiast.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Muhammed Shadil MP, UI/UX & Web Developer.">
   <title>Muhammed Shadil MP</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
     body {
-      background: #0b0b0d;
-      color: #dcdcdc;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
+      background: #000; /* Apple-style black */
+      color: #f5f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
       margin: 0;
+      overflow-x: hidden;
     }
-    html { scroll-behavior: smooth; }
-    h1, h2, h3 { font-family: 'Merriweather', serif; }
-
-    /* Profile Glow */
-    .image-wrapper {
-      position: relative;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid #00ffe5;
-      box-shadow: 0 0 20px rgba(0, 255, 229, 0.3);
+    h1, h2, h3 {
+      font-weight: 700;
+      color: #fff;
     }
-    .image-wrapper::after {
-      content: "";
-      position: absolute;
-      inset: -12px;
-      border-radius: 50%;
-      background: conic-gradient(#00ffe5, #8b5cf6, #00ffe5);
-      animation: spin 10s linear infinite;
-      z-index: -1;
-      opacity: 0.4;
-    }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-
-    /* Glass effect */
-    .glass-effect {
-      background: rgba(30, 30, 35, 0.75);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      transition: all 0.4s ease;
-    }
-    .glass-effect:hover {
-      background: rgba(45, 45, 55, 0.9);
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-    }
-
-    /* Portfolio cards */
-    .portfolio-card {
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-    }
-    .portfolio-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 10px 26px rgba(139, 92, 246, 0.4);
-    }
-
-    /* Button */
-    .cta-button {
-      background: linear-gradient(135deg, #00ffe5, #8b5cf6);
-      border-radius: 50px;
-      padding: 14px 28px;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 16px rgba(139, 92, 246, 0.3);
-    }
-    .cta-button:hover {
-      transform: scale(1.08);
-      box-shadow: 0 10px 26px rgba(0, 255, 229, 0.4);
-    }
-
-    /* Social icons */
-    .social-icons a {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      margin: 0 8px;
-      transition: all 0.3s ease;
-    }
-    .social-icons a:hover {
-      background: #00ffe5;
-      color: #0b0b0d;
-      transform: scale(1.15);
+    p {
+      color: #d1d1d6;
     }
 
     /* Header */
     .fixed-header {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      background: rgba(11, 11, 13, 0.9);
-      backdrop-filter: blur(12px);
+      top: 0; left: 0; width: 100%;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(20px);
+      display: flex; justify-content: center; align-items: center;
       padding: 8px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       z-index: 1000;
       transform: translateY(-100%);
       transition: transform 0.4s ease;
     }
     .fixed-header.active { transform: translateY(0); }
-    .fixed-header img { border-radius: 50%; border: 2px solid #00ffe5; }
 
-    /* Typography scaling */
+    /* Hero image glow */
+    .image-wrapper {
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #1d1d1f;
+      box-shadow: 0 0 30px rgba(255,255,255,0.08);
+    }
+
+    /* Glass cards */
+    .glass-effect {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      transition: all 0.4s ease;
+    }
+    .glass-effect:hover {
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-5px);
+    }
+
+    /* Portfolio cards */
+    .portfolio-card {
+      transition: transform 0.4s ease;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-6px) scale(1.01);
+    }
+
+    /* Apple-style button */
+    .cta-button {
+      background: #0071e3;
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      color: #fff;
+      display: inline-block;
+    }
+    .cta-button:hover {
+      background: #0077ed;
+    }
+
+    /* Social icons */
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      margin: 0 6px;
+      color: #f5f5f7;
+      transition: all 0.3s ease;
+    }
+    .social-icons a:hover {
+      background: #0071e3;
+      color: #fff;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
     h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
-    h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
-    p { font-size: clamp(1rem, 2.5vw, 1.2rem); }
+    h2 { font-size: clamp(2rem, 5vw, 3rem); }
+    p { font-size: 1.05rem; }
   </style>
 </head>
 <body>
   <!-- Fixed Header -->
   <div class="fixed-header">
     <div class="flex items-center gap-3">
-      <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" width="40" height="40" alt="Profile">
-      <span class="font-semibold text-[#00ffe5]">Muhammed Shadil MP</span>
+      <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" width="40" height="40" alt="Profile" class="rounded-full">
+      <span class="font-semibold">Muhammed Shadil MP</span>
     </div>
   </div>
 
   <!-- Hero -->
-  <header class="min-h-screen flex flex-col justify-center items-center text-center relative overflow-hidden">
-    <div class="image-wrapper w-56 h-56 mb-8">
+  <header class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+    <div class="image-wrapper w-48 h-48 mb-6">
       <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" alt="Muhammed Shadil MP" class="w-full h-full object-cover rounded-full">
     </div>
-    <h1 class="font-black text-[#00ffe5] drop-shadow-xl">Muhammed Shadil MP</h1>
-    <p class="mt-4 text-xl md:text-2xl font-semibold text-gray-300">UI/UX Designer & Web Developer</p>
-    <a href="#contact" class="cta-button mt-8 text-lg text-white font-semibold">Get in Touch</a>
+    <h1>Muhammed Shadil MP</h1>
+    <p class="mt-3 text-xl md:text-2xl font-medium text-gray-400">UI/UX Designer · Web Developer</p>
+    <a href="#contact" class="cta-button mt-8">Get in Touch</a>
   </header>
 
   <!-- About -->
   <section id="about" class="py-24 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="mb-8 font-bold text-[#8b5cf6]">About Me</h2>
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="mb-6">About Me</h2>
       <div class="glass-effect p-10 leading-relaxed">
-        I'm a tech enthusiast passionate about blending creativity with technology. I specialize in crafting aesthetic, user-friendly designs and leveraging AI to streamline workflows. My goal is to create impactful digital experiences that are simple, innovative, and effective.
+        Passionate about blending design and technology, I craft user-friendly digital experiences with clean aesthetics. I also integrate AI to enhance productivity and creativity in my projects.
       </div>
     </div>
   </section>
 
   <!-- Skills -->
-  <section class="py-24 px-6 bg-[#111113]">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="mb-12 font-bold text-[#8b5cf6]">What I Do</h2>
+  <section class="py-24 px-6 bg-[#0a0a0c]">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="mb-12">What I Do</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="glass-effect p-8">
-          <h3 class="text-xl text-[#00ffe5] mb-3">UI/UX Design</h3>
-          <p>Designing intuitive and visually appealing interfaces.</p>
+          <h3 class="text-lg font-semibold mb-2">UI/UX Design</h3>
+          <p>Intuitive, human-centered design for web and mobile.</p>
         </div>
         <div class="glass-effect p-8">
-          <h3 class="text-xl text-[#00ffe5] mb-3">AI Integration</h3>
-          <p>Using AI to optimize workflows and enhance projects.</p>
+          <h3 class="text-lg font-semibold mb-2">AI Integration</h3>
+          <p>Using AI tools to streamline workflows and projects.</p>
         </div>
         <div class="glass-effect p-8">
-          <h3 class="text-xl text-[#00ffe5] mb-3">Web Development</h3>
-          <p>Building responsive, modern websites with Webflow and more.</p>
+          <h3 class="text-lg font-semibold mb-2">Web Development</h3>
+          <p>Building responsive, performance-focused websites.</p>
         </div>
         <div class="glass-effect p-8">
-          <h3 class="text-xl text-[#00ffe5] mb-3">Creative Direction</h3>
-          <p>Crafting unique aesthetics for standout projects.</p>
+          <h3 class="text-lg font-semibold mb-2">Creative Direction</h3>
+          <p>Shaping unique aesthetics with precision and clarity.</p>
         </div>
       </div>
     </div>
@@ -180,23 +166,23 @@
   <!-- Portfolio -->
   <section class="py-24 px-6">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="mb-12 font-bold text-[#8b5cf6]">Portfolio / Projects</h2>
+      <h2 class="mb-12">Portfolio</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         
         <!-- Payora -->
         <div class="portfolio-card glass-effect p-6">
           <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/Payroll.png" alt="Payroll" class="w-full h-52 object-cover rounded-lg mb-4">
-          <h3 class="text-xl text-[#00ffe5] mb-2">Payora - Payroll Software</h3>
-          <p class="mb-4">Excel-based payroll software designed to streamline salary management.</p>
-          <a href="https://github.com/mhmmdshadil/muhammed-shadil/raw/main/payroll.xlsx" class="text-[#8b5cf6] hover:underline font-semibold">Download</a>
+          <h3 class="text-lg font-semibold mb-2">Payora - Payroll Software</h3>
+          <p class="mb-4">Excel-based payroll software to streamline salary management.</p>
+          <a href="https://github.com/mhmmdshadil/muhammed-shadil/raw/main/payroll.xlsx" class="text-blue-400 hover:underline">Download</a>
         </div>
 
         <!-- LearnVault -->
         <div class="portfolio-card glass-effect p-6">
           <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/learnvault.png" alt="LearnVault" class="w-full h-52 object-cover rounded-lg mb-4">
-          <h3 class="text-xl text-[#00ffe5] mb-2">LearnVault</h3>
-          <p class="mb-4">An organized platform to explore and learn with curated resources.</p>
-          <a href="https://mhmmdshadil.github.io/learnvault/" class="text-[#8b5cf6] hover:underline font-semibold">Visit Site</a>
+          <h3 class="text-lg font-semibold mb-2">LearnVault</h3>
+          <p class="mb-4">An organized platform to learn with curated resources.</p>
+          <a href="https://mhmmdshadil.github.io/learnvault/" class="text-blue-400 hover:underline">Visit Site</a>
         </div>
 
       </div>
@@ -205,9 +191,9 @@
 
   <!-- Contact -->
   <section id="contact" class="py-24 px-6 text-center">
-    <h2 class="mb-8 font-bold text-[#8b5cf6]">Contact Me</h2>
-    <a href="mailto:mhmmd.shadil.mp@gmail.com" class="cta-button text-lg text-white">Send a Message</a>
-    <div class="social-icons flex justify-center mt-10 text-xl text-white">
+    <h2 class="mb-6">Contact Me</h2>
+    <a href="mailto:mhmmd.shadil.mp@gmail.com" class="cta-button">Send a Message</a>
+    <div class="social-icons flex justify-center mt-10">
       <a href="https://github.com/mhmmdshadil" target="_blank"><i data-lucide="github"></i></a>
       <a href="https://instagram.com/" target="_blank"><i data-lucide="instagram"></i></a>
       <a href="https://x.com/" target="_blank"><i data-lucide="twitter"></i></a>
@@ -215,7 +201,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-10 text-center text-gray-400 bg-black border-t border-[#1f1f22]">
+  <footer class="py-10 text-center text-gray-500 bg-black">
     © 2025 Muhammed Shadil MP. All rights reserved.
   </footer>
 
