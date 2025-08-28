@@ -2,161 +2,608 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Muhammed Shadil MP - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muhammed Shadil MP</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide-icons"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
+    :root {
+      --primary: #0a0a0a;
+      --secondary: #141414;
+      --accent: #d4af37;
+      --accent-light: #f0d97f;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+    }
+    
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a, #141414, #1c1c1c);
-      color: #f5f5f5;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
     }
-    h1, h2, h3 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
+
+    h1, h2, h3, h4 { 
+      font-weight: 600; 
+      color: var(--text-primary); 
+      letter-spacing: -0.5px; 
     }
+    
+    p { 
+      color: var(--text-secondary); 
+      line-height: 1.6;
+    }
+
+    /* Premium Glass Cards */
     .glass {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 1.5rem;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
     }
+    
     .glass:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.7);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-5px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.1);
     }
-    .fade-up { animation: fadeUp 1s ease forwards; opacity: 0; }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
+
+    /* Header */
     .fixed-header {
-      position: fixed;
-      top: 0; left: 0;
+      position: fixed; 
+      top: 0; 
+      left: 0; 
       width: 100%;
-      z-index: 50;
-      background: rgba(15,15,15,0.75);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      height: 64px;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 1000;
+      transform: translateY(-100%);
+      transition: transform 0.5s ease;
     }
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    
+    .fixed-header.active { 
+      transform: translateY(0); 
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* CTA Buttons */
+    .cta-button {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 50px;
+      padding: 16px 40px;
+      font-weight: 600;
+      color: #141414;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-button:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .cta-button:hover:before {
+      left: 100%;
+    }
+    
+    .cta-button:hover {
+      background: linear-gradient(135deg, var(--accent-light), var(--accent));
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+    }
+
+    /* Socials */
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      text-align: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      margin: 0 8px;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .social-icons a:hover {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: #141414;
+      transform: translateY(-3px);
+      border: none;
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Typography scaling */
+    h1 { 
+      font-size: clamp(2.8rem, 7vw, 4.5rem); 
+      background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+    
+    h2 { 
+      font-size: clamp(2rem, 6vw, 2.8rem); 
+      position: relative;
+      display: inline-block;
+      margin-bottom: 40px;
+    }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      border-radius: 3px;
+    }
+    
+    p { 
+      font-size: 1.05rem; 
+    }
+
+    /* Section animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Decorative elements */
+    .accent-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 8px;
+    }
+    
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 10, 10, 0.7);
+    }
+    
+    /* Profile image enhancement - ring removed */
+    .profile-img-container {
+      position: relative;
+      display: inline-block;
+    }
+    
+    /* Section spacing */
+    section {
+      padding: 100px 20px;
+    }
+    
+    /* Skill cards enhancement */
+    .skill-card {
+      transition-delay: 0.1s;
+    }
+    
+    .skill-card:hover {
+      transition-delay: 0s;
+    }
+    
+    /* Portfolio item enhancement */
+    .portfolio-item {
+      transition: transform 0.3s ease;
+    }
+    
+    .portfolio-item img {
+      transition: transform 0.5s ease;
+    }
+    
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Subtle background pattern */
+    body:after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Portfolio Carousel Styles */
+    .portfolio-carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding: 20px 0;
+    }
+    
+    .carousel-container {
+      display: flex;
+      transition: transform 0.5s ease;
+      will-change: transform;
+    }
+    
+    .carousel-item {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 15px;
+    }
+    
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 10;
+    }
+    
+    .carousel-btn {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-btn:hover {
+      background: var(--accent);
+      color: #141414;
+    }
+    
+    .carousel-btn.prev {
+      margin-left: 20px;
+    }
+    
+    .carousel-btn.next {
+      margin-right: 20px;
+    }
+    
+    @media (min-width: 768px) {
+      .carousel-item {
+        width: calc(50% - 30px);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .carousel-item {
+        width: calc(33.333% - 30px);
+      }
     }
   </style>
 </head>
 <body>
-
   <!-- Header -->
-  <div class="fixed-header flex justify-between items-center px-6">
-    <!-- Left: Profile + Name -->
+  <div class="fixed-header">
     <div class="flex items-center gap-3">
-      <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" width="42" height="42" alt="Profile" class="rounded-full">
-      <span class="font-semibold tracking-wide">Muhammed Shadil MP</span>
-    </div>
-
-    <!-- Right: Social Handles -->
-    <div class="flex items-center gap-4">
-      <a href="https://github.com/mhmmdshadil" target="_blank" class="hover:text-yellow-400 transition"><i data-lucide="github"></i></a>
-      <a href="https://instagram.com/mhmmd.shadil/" target="_blank" class="hover:text-yellow-400 transition"><i data-lucide="instagram"></i></a>
-      <a href="https://x.com/mhmmd_shadil" target="_blank" class="hover:text-yellow-400 transition"><i data-lucide="twitter"></i></a>
-      <a href="https://www.linkedin.com/in/muhammed-shadil-9a980736a/" target="_blank" class="hover:text-yellow-400 transition"><i data-lucide="linkedin"></i></a>
+      <div class="profile-img-container">
+        <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" width="40" height="40" alt="Profile" class="rounded-full">
+      </div>
+      <span class="font-semibold tracking-wide text-white">Muhammed Shadil MP</span>
     </div>
   </div>
 
   <!-- Hero -->
-  <section class="hero fade-up px-6">
-    <div class="max-w-3xl mx-auto">
-      <h1 class="text-5xl md:text-6xl font-bold mb-6">Crafting Premium Digital Experiences</h1>
-      <p class="text-lg text-gray-300 mb-8">Designer • Developer • Innovator</p>
-      <a href="#portfolio" class="px-6 py-3 bg-yellow-400 text-black rounded-xl font-medium shadow-lg hover:shadow-yellow-500/50 transition">View My Work</a>
+  <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 fade-up">
+    <div class="mb-8">
+      <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" alt="Muhammed Shadil MP" class="w-48 h-48 object-cover rounded-full shadow-lg">
+    </div>
+    <h1>Muhammed Shadil MP</h1>
+    <p class="mt-3 text-lg md:text-xl font-medium">UI/UX Designer <span class="accent-dot"></span> Web Developer</p>
+    <a href="#contact" class="cta-button mt-10">Let's Connect</a>
+  </header>
+
+  <!-- About -->
+  <section id="about" class="px-6 fade-up">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="mb-8">About Me</h2>
+      <div class="glass p-10 leading-relaxed text-lg">
+        I create digital experiences that combine luxury aesthetics with high-performance technology.  
+        My work focuses on clarity, depth, and premium design principles —  
+        whether it's elegant UI, refined UX, or next-level web applications.
+      </div>
     </div>
   </section>
 
-  <!-- Expertise -->
-  <section class="py-24 px-6 fade-up">
+  <!-- Skills -->
+  <section class="px-6 fade-up">
     <div class="max-w-5xl mx-auto text-center">
-      <h2 class="mb-12 text-3xl font-bold">Expertise</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        
-        <!-- UI/UX -->
-        <div class="glass p-8 flex flex-col items-center">
-          <i data-lucide="layout" class="w-10 h-10 mb-4 text-yellow-400"></i>
-          <h3 class="text-lg font-semibold mb-2">UI/UX Design</h3>
-          <p>Premium, intuitive interfaces for web & mobile.</p>
+      <h2 class="mb-12">Expertise</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass p-8 skill-card">
+          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#d4af37] to-[#f0d97f] flex items-center justify-center mb-4 mx-auto">
+            <i data-lucide="palette" class="text-gray-900" width="28" height="28"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-3">UI/UX Design</h3>
+          <p class="text-sm">Premium, intuitive interfaces for web & mobile.</p>
         </div>
         
-        <!-- AI -->
-        <div class="glass p-8 flex flex-col items-center">
-          <i data-lucide="brain" class="w-10 h-10 mb-4 text-yellow-400"></i>
-          <h3 class="text-lg font-semibold mb-2">AI Solutions</h3>
-          <p>Integrating AI into workflows with elegance.</p>
+        <div class="glass p-8 skill-card">
+          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#d4af37] to-[#f0d97f] flex items-center justify-center mb-4 mx-auto">
+            <i data-lucide="brain" class="text-gray-900" width="28" height="28"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-3">AI Solutions</h3>
+          <p class="text-sm">Integrating AI into workflows with elegance.</p>
         </div>
         
-        <!-- Web Dev -->
-        <div class="glass p-8 flex flex-col items-center">
-          <i data-lucide="code" class="w-10 h-10 mb-4 text-yellow-400"></i>
-          <h3 class="text-lg font-semibold mb-2">Web Development</h3>
-          <p>Scalable, fast, and refined digital builds.</p>
+        <div class="glass p-8 skill-card">
+          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#d4af37] to-[#f0d97f] flex items-center justify-center mb-4 mx-auto">
+            <i data-lucide="code" class="text-gray-900" width="28" height="28"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-3">Web Development</h3>
+          <p class="text-sm">Scalable, fast, and refined digital builds.</p>
         </div>
         
-        <!-- Creative Direction -->
-        <div class="glass p-8 flex flex-col items-center">
-          <i data-lucide="sparkles" class="w-10 h-10 mb-4 text-yellow-400"></i>
-          <h3 class="text-lg font-semibold mb-2">Creative Direction</h3>
-          <p>Minimal, impactful design for brands & products.</p>
+        <div class="glass p-8 skill-card">
+          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#d4af37] to-[#f0d97f] flex items-center justify-center mb-4 mx-auto">
+            <i data-lucide="pen-tool" class="text-gray-900" width="28" height="28"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-3">Creative Direction</h3>
+          <p class="text-sm">Minimal, impactful design for brands & products.</p>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- Portfolio -->
-  <section id="portfolio" class="py-24 px-6 fade-up">
+  <section class="px-6 fade-up">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="mb-12 text-3xl font-bold">Portfolio</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <h2 class="mb-12">Portfolio</h2>
+      <div class="portfolio-carousel">
+        <div class="carousel-container">
+          <!-- Payora -->
+          <div class="carousel-item">
+            <div class="glass p-6 portfolio-item overflow-hidden">
+              <div class="overflow-hidden rounded-xl mb-5">
+                <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/Payroll.png" alt="Payroll" class="w-full h-52 object-cover transition-transform duration-500">
+              </div>
+              <h3 class="text-lg font-semibold mb-3">Payora - Payroll Software</h3>
+              <p class="mb-5 text-sm">Streamlined payroll management with Excel automation.</p>
+              <a href="https://github.com/mhmmdshadil/muhammed-shadil/raw/main/payroll.xlsx" class="text-accent hover:underline flex items-center justify-center gap-2 font-medium">
+                Download <i data-lucide="arrow-right" width="16" height="16"></i>
+              </a>
+            </div>
+          </div>
 
-        <!-- Payora -->
-        <div class="glass p-6">
-          <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/Payroll.png" 
-               alt="Payroll" 
-               class="w-full h-52 object-cover rounded-xl mb-4">
-          <h3 class="text-lg font-semibold mb-2">Payora - Payroll Software</h3>
-          <p class="mb-4">Streamlined payroll management with Excel automation.</p>
-          <a href="https://github.com/mhmmdshadil/muhammed-shadil/raw/main/payroll.xlsx" 
-             class="text-yellow-400 hover:underline">Download</a>
+          <!-- LearnVault -->
+          <div class="carousel-item">
+            <div class="glass p-6 portfolio-item overflow-hidden">
+              <div class="overflow-hidden rounded-xl mb-5">
+                <img src="https://github.com/mhmmdshadil/Demo-website/blob/main/Learn%20Vault.png?raw=true" alt="LearnVault" class="w-full h-52 object-cover transition-transform duration-500">
+              </div>
+              <h3 class="text-lg font-semibold mb-3">LearnVault</h3>
+              <p class="mb-5 text-sm">Curated resource hub with a structured learning flow.</p>
+              <a href="https://mhmmdshadil.github.io/learnvault/" class="text-accent hover:underline flex items-center justify-center gap-2 font-medium">
+                Visit Site <i data-lucide="arrow-right" width="16" height="16"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Add more portfolio items here if needed -->
         </div>
-
-        <!-- LearnVault -->
-        <div class="glass p-6">
-          <img src="https://github.com/mhmmdshadil/Demo-website/raw/main/Learn%20Vault.png" 
-               alt="LearnVault" 
-               class="w-full h-52 object-cover rounded-xl mb-4">
-          <h3 class="text-lg font-semibold mb-2">LearnVault</h3>
-          <p class="mb-4">Curated resource hub with a structured learning flow.</p>
-          <a href="https://mhmmdshadil.github.io/learnvault/" 
-             class="text-yellow-400 hover:underline">Visit Site</a>
+        
+        <div class="carousel-nav">
+          <button class="carousel-btn prev">
+            <i data-lucide="chevron-left" width="24" height="24"></i>
+          </button>
+          <button class="carousel-btn next">
+            <i data-lucide="chevron-right" width="24" height="24"></i>
+          </button>
         </div>
-
       </div>
     </div>
   </section>
 
+  <!-- Contact -->
+  <section id="contact" class="px-6 text-center fade-up">
+    <h2 class="mb-6">Get In Touch</h2>
+    <p class="max-w-xl mx-auto mb-10">Ready to bring your vision to life? Let's create something exceptional together.</p>
+    <a href="mailto:mhmmd.shadil.mp@gmail.com" class="cta-button">Send a Message</a>
+    <div class="social-icons flex justify-center mt-12">
+      <a href="https://github.com/mhmmdshadil" target="_blank"><i data-lucide="github"></i></a>
+      <a href="https://instagram.com/mhmmd.shadil/" target="_blank"><i data-lucide="instagram"></i></a>
+      <a href="https://x.com/mhmmd_shadil" target="_blank"><i data-lucide="twitter"></i></a>
+      <a href="https://www.linkedin.com/in/muhammed-shadil-9a980736a/" target="_blank"><i data-lucide="linkedin"></i></a>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer class="py-8 text-center text-gray-500 text-sm border-t border-gray-800">
+  <footer class="py-10 text-center">
     © 2025 Muhammed Shadil MP. All rights reserved.
   </footer>
 
   <script>
     lucide.createIcons();
+    
+    // Portfolio Carousel Functionality
+    function initCarousel() {
+      const carousel = document.querySelector('.carousel-container');
+      const items = document.querySelectorAll('.carousel-item');
+      const prevBtn = document.querySelector('.carousel-btn.prev');
+      const nextBtn = document.querySelector('.carousel-btn.next');
+      
+      let currentIndex = 0;
+      let autoSlideInterval;
+      let isPaused = false;
+      
+      // Function to update carousel position
+      function updateCarousel() {
+        const itemWidth = items[0].offsetWidth + 30; // Width + margin
+        carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+      }
+      
+      // Next slide function
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % items.length;
+        updateCarousel();
+      }
+      
+      // Previous slide function
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        updateCarousel();
+      }
+      
+      // Auto slide function
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+          if (!isPaused) nextSlide();
+        }, 4000); // Change slide every 4 seconds
+      }
+      
+      // Stop auto slide function
+      function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+      }
+      
+      // Event listeners for buttons
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoSlide();
+        startAutoSlide();
+      });
+      
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoSlide();
+        startAutoSlide();
+      });
+      
+      // Touch events for mobile
+      let startX, moveX;
+      const carouselContainer = document.querySelector('.portfolio-carousel');
+      
+      carouselContainer.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isPaused = true;
+        stopAutoSlide();
+      });
+      
+      carouselContainer.addEventListener('touchmove', (e) => {
+        if (!startX) return;
+        moveX = e.touches[0].clientX;
+      });
+      
+      carouselContainer.addEventListener('touchend', () => {
+        if (!startX || !moveX) return;
+        
+        const diffX = startX - moveX;
+        
+        // If swipe is significant enough
+        if (Math.abs(diffX) > 50) {
+          if (diffX > 0) {
+            // Swipe left - next slide
+            nextSlide();
+          } else {
+            // Swipe right - previous slide
+            prevSlide();
+          }
+        }
+        
+        startX = null;
+        moveX = null;
+        isPaused = false;
+        startAutoSlide();
+      });
+      
+      // Pause auto slide when hovering over carousel
+      carouselContainer.addEventListener('mouseenter', () => {
+        isPaused = true;
+        stopAutoSlide();
+      });
+      
+      carouselContainer.addEventListener('mouseleave', () => {
+        isPaused = false;
+        startAutoSlide();
+      });
+      
+      // Initialize
+      updateCarousel();
+      startAutoSlide();
+      
+      // Update on window resize
+      window.addEventListener('resize', updateCarousel);
+    }
+    
+    window.addEventListener('scroll', () => {
+      const fixedHeader = document.querySelector('.fixed-header');
+      const about = document.querySelector('#about');
+      
+      if (window.scrollY > about.offsetTop - 80) {
+        fixedHeader.classList.add('active');
+      } else {
+        fixedHeader.classList.remove('active');
+      }
+
+      // Fade-up animations
+      document.querySelectorAll('.fade-up').forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          section.classList.add('visible');
+        }
+      });
+    });
+    
+    // Initialize animations on load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.fade-up').forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          section.classList.add('visible');
+        }
+      });
+      
+      // Initialize carousel
+      initCarousel();
+    });
   </script>
 </body>
 </html>
