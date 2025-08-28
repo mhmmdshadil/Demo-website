@@ -2,175 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Muhammed Shadil MP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muhammed Shadil MP - Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-
+  <script src="https://unpkg.com/lucide-icons"></script>
   <style>
     body {
-      background: linear-gradient(180deg, #0a0a0a 0%, #141414 100%);
-      color: #e5e5e5;
       font-family: 'Poppins', sans-serif;
-      margin: 0;
-      overflow-x: hidden;
+      background: linear-gradient(135deg, #0a0a0a, #141414, #1c1c1c);
+      color: #f5f5f5;
     }
-
-    h1, h2, h3 { font-weight: 700; color: #fff; letter-spacing: -0.5px; }
-    p { color: #aaa; }
-
-    /* Premium Glass Cards */
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
     .glass {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 6px 40px rgba(0,0,0,0.6);
-      transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 1.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .glass:hover {
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-8px) scale(1.02);
-      border: 1px solid rgba(255,215,0,0.2);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.7);
     }
-
-    /* Header */
+    .fade-up { animation: fadeUp 1s ease forwards; opacity: 0; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
     .fixed-header {
-      position: fixed; top: 0; left: 0; width: 100%;
-      background: rgba(10,10,10,0.7);
-      backdrop-filter: blur(20px);
-      display: flex; justify-content: center; align-items: center;
-      padding: 14px 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      z-index: 1000;
-      transform: translateY(-100%);
-      transition: transform 0.5s ease;
-    }
-    .fixed-header.active { transform: translateY(0); }
-
-    /* CTA Buttons */
-    .cta-button {
-      background: linear-gradient(135deg, #d4af37, #f0d97f);
-      border-radius: 999px;
-      padding: 14px 36px;
-      font-weight: 600;
-      color: #141414;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      display: inline-block;
-      box-shadow: 0 6px 20px rgba(212,175,55,0.3);
-    }
-    .cta-button:hover {
-      background: linear-gradient(135deg, #f0d97f, #fff4b3);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(212,175,55,0.5);
-    }
-
-    /* Socials */
-    .social-icons a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      margin: 0 10px;
-      color: #e5e5e5;
-      transition: all 0.3s ease;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 50;
+      background: rgba(15,15,15,0.75);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      height: 64px;
     }
-    .social-icons a:hover {
-      background: linear-gradient(135deg, #d4af37, #f0d97f);
-      color: #141414;
-      transform: scale(1.12);
-      border: none;
-    }
-
-    /* Typography scaling */
-    h1 { font-size: clamp(3rem, 7vw, 5rem); }
-    h2 { font-size: clamp(2.2rem, 6vw, 3.2rem); }
-    p { font-size: 1.1rem; }
-
-    /* Section animations */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.1);
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
     }
   </style>
 </head>
 <body>
+
   <!-- Header -->
-  <div class="fixed-header">
+  <div class="fixed-header flex justify-between items-center px-6">
+    <!-- Left: Profile + Name -->
     <div class="flex items-center gap-3">
       <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" width="42" height="42" alt="Profile" class="rounded-full">
       <span class="font-semibold tracking-wide">Muhammed Shadil MP</span>
     </div>
+
+    <!-- Right: Social Handles -->
+    <div class="flex items-center gap-4">
+      <a href="https://github.com/mhmmdshadil" target="_blank" class="hover:text-yellow-400 transition"><i data-lucide="github"></i></a>
+      <a href="https://instagram.com/mhmmd.shadil/" target="_blank" class="hover:text-yellow-400 transition"><i data-lucide="instagram"></i></a>
+      <a href="https://x.com/mhmmd_shadil" target="_blank" class="hover:text-yellow-400 transition"><i data-lucide="twitter"></i></a>
+      <a href="https://www.linkedin.com/in/muhammed-shadil-9a980736a/" target="_blank" class="hover:text-yellow-400 transition"><i data-lucide="linkedin"></i></a>
+    </div>
   </div>
 
   <!-- Hero -->
-  <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 fade-up">
-    <div class="glass p-2 rounded-full">
-      <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" alt="Muhammed Shadil MP" class="w-48 h-48 object-cover rounded-full shadow-lg">
-    </div>
-    <h1 class="mt-8">Muhammed Shadil MP</h1>
-    <p class="mt-3 text-xl md:text-2xl font-medium text-gray-400">UI/UX Designer · Web Developer</p>
-    <a href="#contact" class="cta-button mt-8">Let’s Connect</a>
-  </header>
-
-  <!-- About -->
-  <section id="about" class="py-24 px-6 fade-up">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="mb-8">About Me</h2>
-      <div class="glass p-10 leading-relaxed">
-        I create digital experiences that combine luxury aesthetics with high-performance technology.  
-        My work focuses on clarity, depth, and premium design principles —  
-        whether it’s elegant UI, refined UX, or next-level web applications.
-      </div>
+  <section class="hero fade-up px-6">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">Crafting Premium Digital Experiences</h1>
+      <p class="text-lg text-gray-300 mb-8">Designer • Developer • Innovator</p>
+      <a href="#portfolio" class="px-6 py-3 bg-yellow-400 text-black rounded-xl font-medium shadow-lg hover:shadow-yellow-500/50 transition">View My Work</a>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section class="py-24 px-6 bg-[#0f0f0f] fade-up">
+  <!-- Expertise -->
+  <section class="py-24 px-6 fade-up">
     <div class="max-w-5xl mx-auto text-center">
-      <h2 class="mb-12">Expertise</h2>
+      <h2 class="mb-12 text-3xl font-bold">Expertise</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="glass p-8">
+        
+        <!-- UI/UX -->
+        <div class="glass p-8 flex flex-col items-center">
+          <i data-lucide="layout" class="w-10 h-10 mb-4 text-yellow-400"></i>
           <h3 class="text-lg font-semibold mb-2">UI/UX Design</h3>
           <p>Premium, intuitive interfaces for web & mobile.</p>
         </div>
-        <div class="glass p-8">
+        
+        <!-- AI -->
+        <div class="glass p-8 flex flex-col items-center">
+          <i data-lucide="brain" class="w-10 h-10 mb-4 text-yellow-400"></i>
           <h3 class="text-lg font-semibold mb-2">AI Solutions</h3>
           <p>Integrating AI into workflows with elegance.</p>
         </div>
-        <div class="glass p-8">
+        
+        <!-- Web Dev -->
+        <div class="glass p-8 flex flex-col items-center">
+          <i data-lucide="code" class="w-10 h-10 mb-4 text-yellow-400"></i>
           <h3 class="text-lg font-semibold mb-2">Web Development</h3>
           <p>Scalable, fast, and refined digital builds.</p>
         </div>
-        <div class="glass p-8">
+        
+        <!-- Creative Direction -->
+        <div class="glass p-8 flex flex-col items-center">
+          <i data-lucide="sparkles" class="w-10 h-10 mb-4 text-yellow-400"></i>
           <h3 class="text-lg font-semibold mb-2">Creative Direction</h3>
           <p>Minimal, impactful design for brands & products.</p>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- Portfolio -->
-  <section class="py-24 px-6 fade-up">
+  <section id="portfolio" class="py-24 px-6 fade-up">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="mb-12">Portfolio</h2>
+      <h2 class="mb-12 text-3xl font-bold">Portfolio</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
         <!-- Payora -->
@@ -199,42 +150,13 @@
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-24 px-6 text-center fade-up">
-    <h2 class="mb-6">Get In Touch</h2>
-    <a href="mailto:mhmmd.shadil.mp@gmail.com" class="cta-button">Send a Message</a>
-    <div class="social-icons flex justify-center mt-10">
-      <a href="https://github.com/mhmmdshadil" target="_blank"><i data-lucide="github"></i></a>
-      <a href="https://instagram.com/mhmmd.shadil/" target="_blank"><i data-lucide="instagram"></i></a>
-      <a href="https://x.com/mhmmd_shadil" target="_blank"><i data-lucide="twitter"></i></a>
-      <a href="https://www.linkedin.com/in/muhammed-shadil-9a980736a/" target="_blank"><i data-lucide="linkedin"></i></a>
-    </div>
-  </section>
-
   <!-- Footer -->
-  <footer class="py-10 text-center text-gray-500 bg-black">
+  <footer class="py-8 text-center text-gray-500 text-sm border-t border-gray-800">
     © 2025 Muhammed Shadil MP. All rights reserved.
   </footer>
 
   <script>
     lucide.createIcons();
-    window.addEventListener('scroll', () => {
-      const fixedHeader = document.querySelector('.fixed-header');
-      const about = document.querySelector('#about');
-      if (window.scrollY > about.offsetTop - 80) {
-        fixedHeader.classList.add('active');
-      } else {
-        fixedHeader.classList.remove('active');
-      }
-
-      // Fade-up animations
-      document.querySelectorAll('.fade-up').forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) {
-          section.classList.add('visible');
-        }
-      });
-    });
   </script>
 </body>
 </html>
